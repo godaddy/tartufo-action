@@ -2,4 +2,4 @@
 
 pwd
 ls
-tartufo scan-local-repo .
+/venv/bin/tartufo scan-local-repo .
