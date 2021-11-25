@@ -48,21 +48,33 @@ run_arguments = ["/venv/bin/tartufo", "scan-local-repo", "."]
 def process_global_args(entropy, regex, scan_filenames, output_format, b64_entropy_score, hex_entropy_score):
     options = []
     if entropy.lower() == "false":
-        options.append('--no-entropy ')
+        options.append('--no-entropy')
     if regex.lower() == "false":
-        options.append('--no-regex ')
+        options.append('--no-regex')
     if scan_filenames.lower() == "false":
-        options.append('--no-scan-filenames ')
-    options.append(
-        f' --output-format {output_format} --b64-entropy-score {b64_entropy_score} --hex-entropy-score {hex_entropy_score}')
-
+        options.append('--no-scan-filenames')
+    options.append('--output-format')
+    options.append(output_format)
+    options.append('--b64-entropy-score')
+    options.append(float(b64_entropy_score))
+    options.append('--hex-entropy-score')
+    options.append(float(hex_entropy_score))
+    
     return options
 
 
 run_arguments[1:1] = process_global_args(entropy, regex, scan_filenames, output_format, b64_entropy_score,
                                          hex_entropy_score)
 
-print(run_arguments)
+
+def process_command_args(current_branch, include_submodules):
+    options = []
+
+    return options
+
+
+run_arguments[len(run_arguments):] = process_command_args(current_branch, include_submodules)
+
 process = subprocess.run(run_arguments)
 
 print(f"Tartufo secret scan completed with exit code {process.returncode}")
