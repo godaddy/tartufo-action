@@ -1,7 +1,6 @@
 #!/venv/bin/python
 
 import os
-import pathlib
 import subprocess
 import sys
 
@@ -44,31 +43,34 @@ def process_global_args(entropy, regex, scan_filenames, output_format):
         options.append("--no-regex")
     if scan_filenames.lower() == "false":
         options.append("--no-scan-filenames")
-    options.append("--output-format")
-    options.append(output_format)
+    if output_format.lower() != "text":
+        options.append("--output-format")
+        options.append(output_format)
+
+    return options
+
+
+def process_command_args(current_branch, include_submodules):
+    options = []
+    if current_branch.lower() == "false":
+        options.append("--branch")
+        event_name = os.getenv("GITHUB_EVENT_NAME")
+        if event_name == "pull_request":
+            branch = os.getenv("GITHUB_HEAD_REF")
+        else:
+            branch = os.getenv("GITHUB_REF_NAME")
+        options.append(branch)
+    if include_submodules:
+        options.append("--include-submodules")
 
     return options
 
 
 run_arguments[1:1] = process_global_args(entropy, regex, scan_filenames, output_format)
-print(run_arguments)
-
-
-def process_command_args(current_branch, include_submodules):
-    options = []
-    print(os.environ)
-    if current_branch.lower() == "false":
-        pass
-    if include_submodules:
-        options.append("--include-submodules")
-    return options
-
 
 run_arguments[len(run_arguments) :] = process_command_args(
     current_branch, include_submodules
 )
-
-print(run_arguments)
 
 process = subprocess.run(run_arguments)
 
