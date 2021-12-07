@@ -18,24 +18,16 @@ include_submodules = os.getenv('INPUT_INCLUDE-SUBMODULE')
 current_branch = os.getenv('INPUT_CURRENT-BRANCH')
 
 
-def push_arguments(github_event):
-    if "ref" in github_event.keys() and "before" in github_event.keys():
+def branch_name(github_event):
+    if "ref" in github_event.keys():
         return [
             "--branch",
             github_event["ref"],
-            "--since-commit",
-            github_event["before"],
         ]
-    return []
-
-
-def pr_arguments(github_event):
-    if "pull_request" in github_event.keys():
+    elif "pull_request" in github_event.keys():
         return [
             "--branch",
             github_event["pull_request"]["head"]["ref"],
-            "--max-depth",
-            str(github_event["pull_request"]["commits"]),
         ]
     return []
 
@@ -45,7 +37,7 @@ os.chdir(github_workspace)
 run_arguments = ["/venv/bin/tartufo", "scan-local-repo", "."]
 
 
-def process_global_args(entropy, regex, scan_filenames, output_format, b64_entropy_score, hex_entropy_score):
+def process_global_args(entropy, regex, scan_filenames, output_format):
     options = []
     if entropy.lower() == "false":
         options.append('--no-entropy')
@@ -55,25 +47,22 @@ def process_global_args(entropy, regex, scan_filenames, output_format, b64_entro
         options.append('--no-scan-filenames')
     options.append('--output-format')
     options.append(output_format)
-    options.append('--b64-entropy-score')
-    options.append(float(b64_entropy_score))
-    options.append('--hex-entropy-score')
-    options.append(float(hex_entropy_score))
-    
-    return options
-
-
-run_arguments[1:1] = process_global_args(entropy, regex, scan_filenames, output_format, b64_entropy_score,
-                                         hex_entropy_score)
-
-
-def process_command_args(current_branch, include_submodules):
-    options = []
 
     return options
 
 
-run_arguments[len(run_arguments):] = process_command_args(current_branch, include_submodules)
+run_arguments[1:1] = process_global_args(entropy, regex, scan_filenames, output_format)
+
+
+# def process_command_args(current_branch, include_submodules):
+#     options = []
+#
+#     return options
+
+
+# run_arguments[len(run_arguments):] = process_command_args(current_branch, include_submodules)
+
+print(os.environ)
 
 process = subprocess.run(run_arguments)
 
