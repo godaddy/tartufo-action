@@ -1,21 +1,36 @@
 # tartufo-action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This GitHub Action scans your repository for secrets using [tartufo](https://github.com/godaddy/tartufo).
+
+The target repository should be checked out before invoking this action. The tartufo.toml file in the checked out branch
+will be used as the configuration.
 
 ## Inputs
 
-## `who-to-greet`
+## `entropy`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Optional** Enable entropy checks. Default `"true"`.
 
-## Outputs
+## `regex`
 
-## `time`
+**Optional** Enable regex checks. Default `"true"`.
 
-The time we greeted you.
+## `scan-filenames`
+
+**Optional** Enable filename checks. Default `"true"`.
+
+## `output-format`
+
+**Optional** The format in which the output is generated. Default `"text"`.
+
+## `current-branch`
+
+**Optional** Scan only the current branch. Default `"true"`.
+
+## `include-submodule`
+
+**Optional** Scan git submodules. Default `"false"`.
 
 ## Example usage
 
-uses: actions/hello-world-docker-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
+uses: actions/tartufo@v1

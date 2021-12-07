@@ -2,30 +2,22 @@
 name: 'Scan local repo'
 description: 'Runs scan-local-repo with default options'
 inputs:
-  entropy:  # id of input
+  entropy:
     description: 'Enable entropy checks'
     required: false
     default: 'true'
-  regex: # id of input
+  regex:
     description: 'Enable regex checks'
     required: false
     default: 'true'
-  scan-filenames: # id of input
+  scan-filenames:
     description: 'Enable filename checks'
     required: false
     default: 'true'
-  output-format: # id of input
+  output-format:
     description: 'The format in which the output is generated'
     required: false
     default: 'text'
-  b64-entropy-score:
-    description: 'The base64 entropy score'
-    required: false
-    default: '4.5'
-  hex-entropy-score:
-    description: 'The hexadecimal entropy score'
-    required: false
-    default: '3.0'
   current-branch:
     description: 'Scan only the current branch'
     required: false
