@@ -1,0 +1,33 @@
+# action.yaml
+name: 'Scan local repo'
+description: 'Runs scan-local-repo with default options'
+inputs:
+  entropy:
+    description: 'Enable entropy checks'
+    required: false
+    default: 'true'
+  regex:
+    description: 'Enable regex checks'
+    required: false
+    default: 'true'
+  scan-filenames:
+    description: 'Enable filename checks'
+    required: false
+    default: 'true'
+  output-format:
+    description: 'The format in which the output is generated'
+    required: false
+    default: 'text'
+  entropy-sensitivity:
+    description: 'Modify entropy detection sensitivity. This is expressed as on a scale of 0 to 100'
+    required: false
+  branch:
+    description: 'Scan only the specified branch'
+    required: false
+  include-submodule:
+    description: 'Scan git submodules'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
