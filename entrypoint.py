@@ -44,7 +44,8 @@ def process_global_args(
         options.append("--output-format")
         options.append(output_format)
     if entropy_sensitivity:
-        options.append(f"--entropy-sensitivity {entropy_sensitivity}")
+        options.append("--entropy-sensitivity")
+        options.append(entropy_sensitivity)
 
     return options
 
@@ -55,7 +56,8 @@ def process_command_args(branch: Optional[str], include_submodules: str):
     """
     options = []
     if branch:
-        options.append(f"--branch {branch}")
+        options.append("--branch")
+        options.append(branch)
 
     if include_submodules.lower() != "false":
         options.append("--include-submodules")
