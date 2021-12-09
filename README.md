@@ -37,4 +37,4 @@ will be used as the configuration.
 
 ## Example usage
 
-uses: smimani-godaddy/tartufo-action@v1
+uses: godaddy/tartufo-action@v1
