@@ -23,9 +23,13 @@ will be used as the configuration.
 
 **Optional** The format in which the output is generated. Default `"text"`.
 
+## `entropy-sensitivity`
+
+**Optional** Modify entropy detection sensitivity. Default `"75"`.
+
 ## `branch`
 
-**Required** Scan only the specified branch. Default `"false"`. This scan all branches in the repository.
+**Optional** Scan only the specified branch. Default `"false"`. This scan all branches in the repository.
 
 ## `include-submodule`
 
