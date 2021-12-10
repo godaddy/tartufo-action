@@ -77,7 +77,7 @@ run_arguments[len(run_arguments) :] = process_command_args(
     input_branch, input_include_submodules
 )
 
-process = subprocess.run(run_arguments, check=True)
+process = subprocess.run(run_arguments, check=False)
 
 print(f"Tartufo secret scan completed with exit code {process.returncode}")
 
