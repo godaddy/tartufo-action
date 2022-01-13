@@ -1,3 +1,5 @@
+[tool.poetry]
+authors = ["GoDaddy <oss@godaddy.com>"]
 description = "tartufo is a tool for scanning git repositories for secrets/passwords/high-entropy data"
 documentation = "https://tartufo.readthedocs.io/"
 include = ["CHANGELOG.md", "README.md"]
@@ -7,9 +9,19 @@ maintainers = ["GoDaddy <oss@godaddy.com>"]
 name = "tartufo-action"
 readme = "README.md"
 repository = "https://github.com/godaddy/tartufo-action/"
-version = "0.0.1"
+version = "1.0.0"
 
 [tool.pylint.'MESSAGES CONTROL']
 # C0111: Missing docstrings
 # C0301: Line too long (Note: This is all handled by black now)
 disable = "C0111,C0301"
+
+[tool.tartufo]
+json = false
+regex = true
+repo-path = "."
+cleanup = true
+entropy = true
+exclude-entropy-patterns = [
+    {path-pattern = '\.github/workflows/.*\.(yaml|yml)', pattern = 'uses: .*@[a-zA-Z0-9]{40}', reason = 'GitHub Actions'}
+]
