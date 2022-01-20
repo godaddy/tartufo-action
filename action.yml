@@ -1,4 +1,4 @@
-# action.yaml
+# action.yml
 name: 'Scan local repo'
 description: 'Runs scan-local-repo with default options'
 inputs:
