@@ -1,5 +1,5 @@
 # action.yml
-name: 'Tartufo'
+name: 'Tartufo Scan'
 description: 'Runs scan-local-repo with default options'
 inputs:
   entropy:
