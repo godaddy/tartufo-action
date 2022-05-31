@@ -1,6 +1,6 @@
 # Container image that runs your code
 # pin the version
-FROM godaddy/tartufo:3.1.3
+FROM godaddy/tartufo:3.1.4
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.py /entrypoint.py
