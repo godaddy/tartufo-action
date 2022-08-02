@@ -2,6 +2,10 @@
 name: 'Tartufo Scan'
 description: 'Runs scan-local-repo with default options'
 inputs:
+  mode:
+    description: 'Override Tartufo scan mode'
+    required: false
+    default: 'scan-local-repo'
   entropy:
     description: 'Enable entropy checks'
     required: false
