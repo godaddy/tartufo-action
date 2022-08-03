@@ -9,6 +9,7 @@ from typing import Optional
 
 github_workspace = os.getenv("GITHUB_WORKSPACE")
 
+input_mode: str = os.getenv("INPUT_MODE", "scan-local-repo")
 input_entropy: str = os.getenv("INPUT_ENTROPY", "true")
 input_regex: str = os.getenv("INPUT_REGEX", "true")
 input_scan_filenames: str = os.getenv("INPUT_SCAN-FILENAMES", "true")
@@ -20,7 +21,7 @@ input_include_submodules: str = os.getenv("INPUT_INCLUDE-SUBMODULE", "false")
 
 os.chdir(github_workspace)  # type: ignore
 
-run_arguments = ["/venv/bin/tartufo", "scan-local-repo", "."]
+run_arguments = ["/venv/bin/tartufo", input_mode, "."]
 
 
 def process_global_args(
