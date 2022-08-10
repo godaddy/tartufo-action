@@ -16,7 +16,7 @@ repos:
   hooks:
   -   id: pylint
 - repo: https://github.com/godaddy/tartufo
-  rev: v3.1.4
+  rev: v3.2.0
   hooks:
     - id: tartufo
 - repo: https://github.com/pre-commit/mirrors-mypy
