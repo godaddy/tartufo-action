@@ -1,3 +1,8 @@
+v3.2.1 - 15 August 2022
+------------------------
+
+* Update the action to use Tartufo v3.2.1
+
 v3.2.0 - 10 August 2022
 ------------------------
 
