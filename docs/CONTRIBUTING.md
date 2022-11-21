@@ -33,7 +33,8 @@ requiring peer review, and cannot easily happen accidentally. The steps involved
     3. Title the release. Generally these would just be in the form
        `Version 2.1.0`. (Not very creative, I know. But predictable!)
     4. Copy-paste the CHANGELOG entries for this new version into the description.
-    5. Click `Publish release`!
+    5. Make sure the `Publish this Action to the GitHub Marketplace` is selected, if it is not selected by default.
+    6. Click `Publish release`!
 
 Congratulations, you've just issued a new release for `tartufo-action`. The automation will take care of the rest! 🎉
 
