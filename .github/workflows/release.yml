@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
       - name: Create a GitHub release
-        uses: ncipollo/release-action@40bb172bd05f266cf9ba4ff965cb61e9ee5f6d01
+        uses: ncipollo/release-action@a5996b3a733af99dce9d614dc1d70412e81735c7
         with:
           tag: ${{ github.event.inputs.TAG_NAME }}
           name: Release ${{ github.event.inputs.TAG_NAME }}
