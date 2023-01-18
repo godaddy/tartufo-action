@@ -29,7 +29,7 @@ will be used as the configuration.
 
 ## `branch`
 
-**Optional** Scan only the specified branch. Default `"false"`. This scan all branches in the repository.
+**Optional** Scan only the specified branch. By default, all branches in the repository are scanned.
 
 ## `include-submodule`
 
