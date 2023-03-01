@@ -9,7 +9,7 @@ maintainers = ["GoDaddy <oss@godaddy.com>"]
 name = "tartufo-action"
 readme = "README.md"
 repository = "https://github.com/godaddy/tartufo-action/"
-version = "4.0.0"
+version = "4.0.1"
 
 [tool.pylint.'MESSAGES CONTROL']
 # C0111: Missing docstrings
